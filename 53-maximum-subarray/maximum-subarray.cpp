@@ -1,25 +1,18 @@
-#include <climits> // For INT_MIN
-
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int max_sum = INT_MIN;
-        int current_sum = 0;
+        int sum = 0;
+        int maxi = INT_MIN;
 
-        for (int num : nums) {
-            current_sum += num;
-            
-          
-            if (current_sum > max_sum) {
-                max_sum = current_sum;
-            }
-            
-            
-            if (current_sum < 0) {
-                current_sum = 0;
+        for(int i =0;i<nums.size();i++){
+            sum += nums[i];
+
+            maxi = max(maxi,sum);
+
+            if(sum<0){
+                sum = 0;
             }
         }
-        
-        return max_sum;
+        return maxi;
     }
 };
