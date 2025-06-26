@@ -15,7 +15,7 @@ public:
         
         vector<int> temp;
         ListNode* curr = head;
-       
+
         while (curr != nullptr) {
             temp.push_back(curr->val);
             curr = curr->next;
@@ -23,15 +23,15 @@ public:
         
         int l = 0;
         int r = temp.size() - 1;
-        vector<int> reordered;
+        vector<int> ans;
         
        
         while (l <= r) {
             if (l == r) {
-                reordered.push_back(temp[l]);
+                ans.push_back(temp[l]);
             } else {
-                reordered.push_back(temp[l]);
-                reordered.push_back(temp[r]);
+                ans.push_back(temp[l]);
+                ans.push_back(temp[r]);
             }
             l++;
             r--;
@@ -39,7 +39,7 @@ public:
         
          
         curr = head;
-        for (int val : reordered) {
+        for (int val : ans) {
             curr->val = val;
             curr = curr->next;
         }
