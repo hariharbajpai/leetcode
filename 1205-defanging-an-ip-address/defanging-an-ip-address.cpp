@@ -1,24 +1,14 @@
 class Solution {
 public:
     string defangIPaddr(string address) {
-        queue<char> q;
-        
+        string result;
         for(char c : address) {
             if(c == '.') {
-                q.push('[');
-                q.push('.');
-                q.push(']');
+                result += "[.]";
             } else {
-                q.push(c);
+                result += c;
             }
         }
-        
-        string result;
-        while(!q.empty()) {
-            result += q.front();
-            q.pop();
-        }
-        
         return result;
     }
 };
