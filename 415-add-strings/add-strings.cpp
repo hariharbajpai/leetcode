@@ -18,3 +18,17 @@ public:
         return result;
     }
 };
+
+// class Solution {
+// public:
+//     string addStrings(string num1, string num2) {
+//         string result;
+//         long long n1 = stoll(num1);  // Use long long instead of int
+//         long long n2 = stoll(num2);
+
+//         long long sum = n1 + n2;
+
+//         result = to_string(sum);
+//         return result;
+//     }
+// };
