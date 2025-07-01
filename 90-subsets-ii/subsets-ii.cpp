@@ -1,22 +1,27 @@
 class Solution {
-    void helper(int idx, vector<int>& arr, vector<vector<int>>& ans, vector<int>& ds) {
-        ans.push_back(ds);  // include current subset
-
-        for (int i = idx; i < arr.size(); i++) {
-            if (i > idx && arr[i] == arr[i - 1]) continue;  // skip duplicate
-
-            ds.push_back(arr[i]);
-            helper(i + 1, arr, ans, ds);
-            ds.pop_back();  // backtrack
+    void helper(int idx , vector<int>& arr, set<vector<int>>& unique, vector<int>& ds){
+        if(idx == arr.size()){
+            unique.insert(ds); // only unique subsets will be added
+            return;
         }
+
+        // pick
+        ds.push_back(arr[idx]);
+        helper(idx + 1, arr, unique, ds);
+        ds.pop_back();
+
+        // not pick
+        helper(idx + 1, arr, unique, ds);
     }
 
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        vector<vector<int>>ans;
-        vector<int>ds;
-        helper(0,nums,ans,ds);
-        return ans;
+        sort(nums.begin(), nums.end());  // sorting ensures set works properly
+        set<vector<int>> unique;
+        vector<int> ds;
+
+        helper(0, nums, unique, ds);
+
+        return vector<vector<int>>(unique.begin(), unique.end());
     }
 };
