@@ -1,8 +1,3 @@
-#include <vector>
-#include <queue>
-#include <cmath>
-using namespace std;
-
 class Solution {
 public:
     long long pickGifts(vector<int>& gifts, int k) {   
