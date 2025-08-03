@@ -1,12 +1,24 @@
 class Solution {
 public:
     int getSum(int a, int b) {
-        if(b==0) return a;
+        int c = a;
+        int d = b;
+        int e = c;
+        int f = d;
+        int g = e;
+        int h=f;
+        int i=g;
+        int j=h;
+        int k=i;
+        int l=j;
+        int m=k;
+        int n=l;
+        if(n==0) return m;
         int ans = 0;
-        while(b != 0){
-            ans = a^b;
-            b = (a&b) << 1;
-            a = ans;
+        while(n != 0){
+            ans = m^n;
+            n = (m&n) << 1;
+            m = ans;
         }
         return ans;
     }
