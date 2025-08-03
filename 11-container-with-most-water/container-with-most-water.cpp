@@ -6,8 +6,8 @@ public:
         int maxarea = 0;
 
         while(l<r){
-            int currarea = min(height[l],height[r]) * (r-l);
-            maxarea = max(maxarea,currarea);
+            int area = min(height[l], height[r]) * (r - l);
+            maxarea = max(maxarea,area);
 
             if(height[l]<height[r]) l++;
             else r--;
