@@ -12,35 +12,33 @@ class Solution {
 public:
     void reorderList(ListNode* head) {
         if (!head || !head->next) return;
-        
-        vector<int> temp;
-        ListNode* curr = head;
 
+        // 1) Dump values
+        ListNode* curr = head;
+            vector<int> temp;
         while (curr != nullptr) {
             temp.push_back(curr->val);
             curr = curr->next;
         }
-        
-        int l = 0;
-        int r = temp.size() - 1;
-        vector<int> ans;
-        
-       
-        while (l <= r) {
-            if (l == r) {
-                ans.push_back(temp[l]);
+
+        // 2) Reorder sequence: L0, Ln, L1, Ln-1, ...
+        vector<int> order;
+        int i = 0, j = (int)temp.size() - 1;
+        while (i <= j) {
+            if (i == j) {
+                order.push_back(temp[i]);
             } else {
-                ans.push_back(temp[l]);
-                ans.push_back(temp[r]);
+                order.push_back(temp[i]);
+                order.push_back(temp[j]);
             }
-            l++;
-            r--;
+            ++i; --j;
         }
-        
-         
+
+        // 3) Write back into the SAME list (void signature ⇒ in-place)
         curr = head;
-        for (int val : ans) {
-            curr->val = val;
+        int k = 0;
+        while (curr != nullptr) {
+            curr->val = order[k++];
             curr = curr->next;
         }
     }
